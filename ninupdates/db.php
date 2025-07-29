@@ -11,7 +11,8 @@ function dbconnection_start()
 	$dbconn_refcount++;
 	if($dbconn_refcount>1)return;
 
-	$password = file_get_contents($sitecfg_mysqldb_pwdpath);
+	///$password = file_get_contents($sitecfg_mysqldb_pwdpath); //this do not work!!!!
+	$password = $sitecfg_mysqldb_pwdpath;
 
 	@$mysqldb = mysqli_connect("localhost", $sitecfg_mysqldb_username, $password, $sitecfg_mysqldb_database);
 	if(mysqli_connect_errno())die("Failed to connect to mysql.\n");
